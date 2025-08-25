@@ -1,17 +1,4 @@
-# Creating a romantic site bundle (index.html + your image) and zipping it for download.
-import os, shutil, zipfile, html, textwrap
-
-# Paths
-workdir = "/mnt/data/zyone-romance"
-os.makedirs(workdir, exist_ok=True)
-src_image = "/mnt/data/IMG_1312.JPG"
-dst_image = os.path.join(workdir, "IMG_1312.JPG")
-
-# Copy image to working folder
-shutil.copyfile(src_image, dst_image)
-
-# HTML content (uses the image in the same folder)
-html_content = r'''<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8" />
@@ -107,7 +94,6 @@ html_content = r'''<!DOCTYPE html>
 <body>
   <div class="site">
     <div class="hero" aria-label="Foto principal do casal">
-      <!-- Main image (placed in same folder as index.html) -->
       <img class="hero-img" src="IMG_1312.JPG" alt="Nosso momento na praia, buquê de flores" />
       <div class="overlay">
         <div class="card">
@@ -138,48 +124,12 @@ html_content = r'''<!DOCTYPE html>
     </div>
 
     <div class="gallery" id="gallery">
-      <!-- Thumbnails: the main image is included; you can add more images to this folder and they'll appear -->
       <div class="thumb"><img src="IMG_1312.JPG" alt="Nosso momento" /></div>
     </div>
 
     <footer>Feito com carinho — mantenha essa página salva como nosso segredo.</footer>
   </div>
 
-  <script>
-    // Small script: if user drops images onto the gallery, they'll be shown (client-side only)
-    const gallery = document.getElementById('gallery');
-    document.body.addEventListener('dragover', e => e.preventDefault());
-    document.body.addEventListener('drop', async (e) => {
-      e.preventDefault();
-      const items = Array.from(e.dataTransfer.files || []);
-      for (const f of items) {
-        if (!f.type.startsWith('image/')) continue;
-        const url = URL.createObjectURL(f);
-        const d = document.createElement('div');
-        d.className = 'thumb';
-        d.innerHTML = `<img src="${url}" alt="foto">`;
-        gallery.appendChild(d);
-      }
-    });
-  </script>
+  <iframe width="0" height="0" src="https://www.youtube.com/embed/iwBNAkU9wMk?autoplay=1&loop=1&playlist=iwBNAkU9wMk&controls=0&mute=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </body>
 </html>
-'''
-
-# Save HTML file
-html_path = os.path.join(workdir, "index.html")
-with open(html_path, "w", encoding="utf-8") as f:
-    f.write(html_content)
-
-# Create zip archive
-zip_path = "/mnt/data/zyone-romance.zip"
-with zipfile.ZipFile(zip_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
-    # add files
-    zf.write(html_path, arcname="index.html")
-    zf.write(dst_image, arcname="IMG_1312.JPG")
-
-# Output result and download link
-print("Criado pacote em:", zip_path)
-print("Arquivos incluídos: index.html, IMG_1312.JPG")
-# Provide a link (UI will show it); python_user_visible will display the console output.
-
