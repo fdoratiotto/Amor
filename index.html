@@ -42,7 +42,12 @@
       padding: 28px; border-radius: 12px;
       backdrop-filter: blur(10px) saturate(120%);
       box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s forwards ease-out 0.5s;
     }
+    @keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+
     h1 { margin: 0; font-family: 'Great Vibes', cursive; font-size: 52px; color: white; text-shadow: 0 6px 18px rgba(0,0,0,0.45); }
     h2 { margin: 8px 0 18px 0; color: #fff; font-size: 18px; font-weight: 600; opacity: 0.95; }
     .quote {
@@ -50,6 +55,9 @@
       border-radius: 12px; margin-top: 22px;
       color: #222; line-height: 1.6;
       box-shadow: 0 16px 40px rgba(0,0,0,0.12); font-size: 1.05rem;
+      opacity: 0;
+      transform: translateY(15px);
+      animation: fadeUp 1s forwards ease-out 1s;
     }
     .actions { display: flex; gap: 12px; margin-top: 18px; }
     .btn {
@@ -63,11 +71,28 @@
     .btn:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(255,107,129,0.22); }
     .muted { color: var(--muted); font-size: 0.95rem; margin-top: 10px; }
     .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 18px; }
-    .thumb { border-radius: 10px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-    .thumb img { width: 100%; height: 160px; object-fit: cover; display: block; transition: transform .3s ease; }
-    .thumb:hover img { transform: scale(1.06); }
+    .thumb {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+      opacity: 0; transform: translateY(15px);
+      animation: fadeUpThumb 0.8s forwards ease-out;
+    }
+    .thumb:nth-child(1) { animation-delay: 1.2s; }
+    .thumb:nth-child(2) { animation-delay: 1.4s; }
+    .thumb:nth-child(3) { animation-delay: 1.6s; }
+    .thumb:nth-child(4) { animation-delay: 1.8s; }
+    .thumb:nth-child(5) { animation-delay: 2s; }
+    @keyframes fadeUpThumb { to { opacity: 1; transform: translateY(0); } }
+
+    .thumb img {
+      width: 100%; height: 160px; object-fit: cover; display: block;
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+    .thumb:hover img { transform: scale(1.08) translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.25); }
+
     footer { margin-top: 20px; text-align: center; color: var(--muted); font-size: 0.95rem; }
-    iframe { width: 100%; height: 100%; border: none; margin-top: 40px; }
+    iframe { width: 100%; height: 300px; border: none; margin-top: 40px; }
+    #unmute-btn { display:block; margin:10px auto; }
     @media (max-width: 900px) { .hero-img { height: 420px; } h1 { font-size: 38px; } }
     @media (max-width: 520px) {
       body { padding: 15px; }
@@ -122,7 +147,12 @@
       <div class="thumb"><img src="https://i.postimg.cc/ctv5Gvfr/IMG_1297.jpg" alt="Foto adicional 5"></div>
     </div>
 
-    <iframe src="https://www.youtube.com/embed/iwBNAkU9wMk?si=IC_kbEtT1RiEE-4k" title="Música do YouTube" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <iframe id="yt-music" 
+            src="https://www.youtube.com/embed/iwBNAkU9wMk?autoplay=1&mute=1&loop=1&playlist=iwBNAkU9wMk" 
+            title="Música do YouTube" 
+            allow="autoplay; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
+    <button id="unmute-btn" class="btn">Ouvir música</button>
 
     <footer>Feito com carinho — mantenha essa página salva como nosso segredo.</footer>
   </div>
@@ -141,6 +171,13 @@
         d.innerHTML = `<img src="${url}" alt="foto">`;
         gallery.appendChild(d);
       }
+    });
+
+    const iframe = document.getElementById('yt-music');
+    const btn = document.getElementById('unmute-btn');
+    btn.addEventListener('click', () => {
+      iframe.contentWindow.postMessage('{"event":"command","func":"unMute","args":""}', '*');
+      btn.style.display = 'none';
     });
   </script>
 </body>
