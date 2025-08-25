@@ -1,100 +1,164 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Nosso Momento — Para Sempre</title>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --accent:#ff6b81;
-      --accent-2:#ff9aa2;
-      --muted:#6b6b6b;
-      --card-bg: rgba(255,255,255,0.95);
+    :root {
+      --accent: #ff6b81;
+      --accent-2: #ff9aa2;
+      --muted: #6b6b6b;
       --glass: rgba(255,255,255,0.65);
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0; font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; 
-      -webkit-font-smoothing:antialiased;
-      background: linear-gradient(120deg, rgba(255,107,129,0.05), rgba(255,154,162,0.02));
-      color:#222;
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:40px;
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      -webkit-font-smoothing: antialiased;
+      background: url('https://i.postimg.cc/GBb7h7k0/IMG_XXXX.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #222;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
     }
-    .site{
-      width:100%; max-width:1100px;
-      margin:auto;
+    .site {
+      width: 100%;
+      max-width: 1100px;
+      margin: auto;
     }
-    .hero{
-      position:relative;
-      border-radius:18px;
-      overflow:hidden;
+    .hero {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
       box-shadow: 0 20px 60px rgba(0,0,0,0.18);
     }
-    .hero-img{display:block; width:100%; height:520px; object-fit:cover;}
-    .overlay{
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.32));
-      display:flex;
-      align-items:flex-end;
-      padding:36px;
+    .hero-img {
+      display: block;
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
     }
-    .card{
-      width:100%;
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.12), rgba(0,0,0,0.32));
+      display: flex;
+      align-items: flex-end;
+      padding: 36px;
+    }
+    .card {
+      width: 100%;
       background: var(--glass);
-      padding:28px;
-      border-radius:12px;
+      padding: 28px;
+      border-radius: 12px;
       backdrop-filter: blur(6px) saturate(120%);
       box-shadow: 0 10px 30px rgba(0,0,0,0.18);
     }
-    h1{ margin:0; font-family:'Great Vibes', cursive; font-size:52px; color:white; text-shadow:0 6px 18px rgba(0,0,0,0.45); }
-    h2{ margin:8px 0 18px 0; color:#fff; font-size:18px; font-weight:600; opacity:0.95; }
-    .quote{
-      max-width:820px;
+    h1 {
+      margin: 0;
+      font-family: 'Great Vibes', cursive;
+      font-size: 52px;
+      color: white;
+      text-shadow: 0 6px 18px rgba(0,0,0,0.45);
+    }
+    h2 {
+      margin: 8px 0 18px 0;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 600;
+      opacity: 0.95;
+    }
+    .quote {
+      max-width: 820px;
       background: rgba(255,255,255,0.92);
-      padding:26px;
-      border-radius:12px;
-      margin-top:22px;
-      color:#222;
-      line-height:1.6;
+      padding: 26px;
+      border-radius: 12px;
+      margin-top: 22px;
+      color: #222;
+      line-height: 1.6;
       box-shadow: 0 16px 40px rgba(0,0,0,0.12);
-      font-size:1.05rem;
+      font-size: 1.05rem;
     }
-    .actions{ display:flex; gap:12px; margin-top:18px; }
-    .btn{
-      padding:12px 18px; border-radius:999px; border:none; cursor:pointer; font-weight:600; color:white;
-      background: linear-gradient(90deg,var(--accent),var(--accent-2));
+    .actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .btn {
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
       box-shadow: 0 10px 30px rgba(255,107,129,0.18);
-      transition:transform .18s ease, box-shadow .18s ease;
-      text-decoration:none;
+      transition: transform .18s ease, box-shadow .18s ease;
+      text-decoration: none;
     }
-    .btn:hover{ transform:translateY(-4px); box-shadow: 0 18px 40px rgba(255,107,129,0.22); }
-    .muted{ color:var(--muted); font-size:0.95rem; margin-top:10px;}
-    .gallery{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:12px; margin-top:18px; }
-    .thumb{ border-radius:10px; overflow:hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
-    .thumb img{ width:100%; height:160px; object-fit:cover; display:block; transition:transform .3s ease; }
-    .thumb:hover img{ transform:scale(1.06); }
-    footer{ margin-top:20px; text-align:center; color:var(--muted); font-size:0.95rem; }
-    @media (max-width:900px){
-      .hero-img{ height:420px; }
-      h1{ font-size:38px; }
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 18px 40px rgba(255,107,129,0.22);
     }
-    @media (max-width:520px){
-      body{ padding:20px; }
-      .hero-img{ height:360px; }
-      h1{ font-size:32px; }
-      .quote{ font-size:1rem; padding:18px; }
+    .muted {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-top: 10px;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .thumb {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+    .thumb img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+      transition: transform .3s ease;
+    }
+    .thumb:hover img {
+      transform: scale(1.06);
+    }
+    footer {
+      margin-top: 20px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      margin-top: 40px;
+    }
+    @media (max-width: 900px) {
+      .hero-img { height: 420px; }
+      h1 { font-size: 38px; }
+    }
+    @media (max-width: 520px) {
+      body { padding: 20px; }
+      .hero-img { height: 360px; }
+      h1 { font-size: 32px; }
+      .quote { font-size: 1rem; padding: 18px; }
     }
   </style>
 </head>
 <body>
   <div class="site">
     <div class="hero" aria-label="Foto principal do casal">
-      <img class="hero-img" src="IMG_1312.JPG" alt="Nosso momento na praia, buquê de flores" />
+      <img class="hero-img" src="https://i.postimg.cc/nj8ykYm0/IMG_1303.jpg" alt="Nosso momento na praia, buquê de flores">
       <div class="overlay">
         <div class="card">
           <h1>Para sempre nós</h1>
@@ -105,31 +169,52 @@
 
     <div class="quote" role="article" aria-label="Texto romântico">
       <strong>Aqui foi tudo onde começou.</strong><br><br>
-      lembro de cada momento: eu escondido com o buquê de flores e você caminhando como se nada estivesse acontecendo.
+      Lembro de cada momento: eu escondido com o buquê de flores e você caminhando como se nada estivesse acontecendo.
       Aí eu te surpreendo com o buquê e te peço pra namorar comigo — e a gente chorava até não querer mais.
       Quero que esse momento nosso fique na memória eternamente entre a gente, que foi quando dois corpos e duas almas se encontraram.
-      Com todas as dificuldades da vida, com tantas pessoas falando, nós fizemos dar certo.  
+      Com todas as dificuldades da vida, com tantas pessoas falando, nós fizemos dar certo.
       <br><br>
       <em style="display:block; margin-top:12px; color:#6b6b6b;">— Que esse dia viva em nós para sempre.</em>
       <div class="actions">
-        <a class="btn" href="IMG_1312.JPG" download="Nosso_Momento.jpg">Salvar foto</a>
+        <a class="btn" href="https://i.postimg.cc/nj8ykYm0/IMG_1303.jpg" download="Nosso_Momento.jpg">Salvar foto</a>
         <button class="btn" onclick="window.print()">Imprimir lembrança</button>
       </div>
       <div class="muted">Dica: compartilhe com ela o link desse site — é uma lembrança só de vocês.</div>
     </div>
 
-    <div style="display:flex; align-items:center; justify-content:space-between; margin-top:20px;">
-      <h3 style="margin:0; color:#222;">Galeria</h3>
-      <div style="font-size:0.95rem; color:var(--muted)">Adicione mais fotos para criar uma coleção</div>
+    <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 20px;">
+      <h3 style="margin: 0; color: #222;">Galeria</h3>
+      <div style="font-size: 0.95rem; color: var(--muted)">Adicione mais fotos para criar uma coleção</div>
     </div>
 
     <div class="gallery" id="gallery">
-      <div class="thumb"><img src="IMG_1312.JPG" alt="Nosso momento" /></div>
+      <div class="thumb"><img src="https://i.postimg.cc/PNdXnTLK/IMG_1302.jpg" alt="Foto adicional 1"></div>
+      <div class="thumb"><img src="https://i.postimg.cc/HVR1ngLq/IMG_1360.jpg" alt="Foto adicional 2"></div>
+      <div class="thumb"><img src="https://i.postimg.cc/43a97438/IMG_1303.jpg" alt="Foto adicional 3"></div>
+      <div class="thumb"><img src="https://i.postimg.cc/43a97438/IMG_1303.jpg" alt="Foto adicional 4"></div>
+      <div class="thumb"><img src="https://i.postimg.cc/ctv5Gvfr/IMG_1297.jpg" alt="Foto adicional 5"></div>
     </div>
+
+    <iframe src="https://www.youtube.com/embed/iwBNAkU9wMk?si=IC_kbEtT1RiEE-4k" title="Música do YouTube" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
     <footer>Feito com carinho — mantenha essa página salva como nosso segredo.</footer>
   </div>
 
-  <iframe width="0" height="0" src="https://www.youtube.com/embed/iwBNAkU9wMk?autoplay=1&loop=1&playlist=iwBNAkU9wMk&controls=0&mute=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  <script>
+    const gallery = document.getElementById('gallery');
+    document.body.addEventListener('dragover', e => e.preventDefault());
+    document.body.addEventListener('drop', async (e) => {
+      e.preventDefault();
+      const items = Array.from(e.dataTransfer.files || []);
+      for (const f of items) {
+        if (!f.type.startsWith('image/')) continue;
+        const url = URL.createObjectURL(f);
+        const d = document.createElement('div');
+        d.className = 'thumb';
+        d.innerHTML = `<img src="${url}" alt="foto">`;
+        gallery.appendChild(d);
+      }
+    });
+  </script>
 </body>
 </html>
